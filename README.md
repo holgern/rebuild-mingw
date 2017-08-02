@@ -38,6 +38,26 @@ mingw-w64-i686-windows-default-manifest
 mingw-w64-i686-winpthreads-git
 mingw-w64-i686-zlib
 
-The provided scripts can be used to compile several mingw-packages from scratch.
+The provided scripts can be used to compile several mingw-packages from https://github.com/Alexpux/MINGW-packages.
+Copy the scripts in the base directory of MINGW-packages.
 
+Problematic are circular dependencies:
+cmake - jsoncpp - qt5
+doxygen - clang - qt5
+fontconfig - freetype - harfbuzz - cairo
+
+Order of using scripts is:
+rebuild-curl.sh
+rebuild-cmake.sh
+pacman -S mingw-w64-i686-cmake
+rebuild-cmake.sh
+rebuild-python.sh
+rebuild-cairo.sh
+pacman -S mingw-w64-i686-fontconfig mingw-w64-i686-freetype mingw-w64-i686-harfbuzz mingw-w64-i686-cairo
+rebuild-cairo.sh
+rebuild-doxygen.sh
+rebuild-qt5.sh
+rebuild-poppler.sh
+rebuild-imagemagick.sh
+rebuild-gstreamer.sh
  
