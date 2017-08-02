@@ -33,6 +33,13 @@ packages+=("mingw-w64-libatomic_ops")
 
 packages+=("mingw-w64-ninja")
 packages+=("mingw-w64-ruby")
+packages+=("mingw-w64-giflib")
+packages+=("mingw-w64-zziplib")
+packages+=("mingw-w64-assimp")
+packages+=("mingw-w64-libmng")
+packages+=("mingw-w64-libwebp")
+
+
 packages+=("mingw-w64-qt5")
  
 
