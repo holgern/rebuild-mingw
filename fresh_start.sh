@@ -13,6 +13,8 @@ mkdir artifacts_src_old
 mkdir artifacts_src
 mv artifacts_src/* artifacts_src_old
 
+pacman -S git
+
 git_config user.email 'ci@msys2.org'
 git_config user.name  'MSYS2 Continuous Integration'
 #git remote add upstream 'https://github.com/Alexpux/MINGW-packages'

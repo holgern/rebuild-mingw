@@ -58,7 +58,7 @@ _package_info() {
     for property in "${properties[@]}"; do
         local -n nameref_property="${property}"
         nameref_property=($(
-            MINGW_PACKAGE_PREFIX='mingw-w64' source "${package}/PKGBUILD"
+            MINGW_PACKAGE_PREFIX='mingw-w64' source "${PKGROOT}/${package}/PKGBUILD"
             declare -n nameref_property="${property}"
             echo "${nameref_property[@]}"))
     done
@@ -165,7 +165,7 @@ execute(){
     local status="${1}"
     local command="${2}"
     local arguments=("${@:3}")
-    cd "${package:-.}"
+    cd "${PKGROOT}/${package:-.}"
     message "${status}"
     if [[ "${command}" != *:* ]]
         then ${command} ${arguments[@]}
@@ -260,6 +260,16 @@ check_recipe_quality() {
         return 0
     fi
     saneman --format='\t%l:%c %p:%c %m' --verbose --no-terminal "${packages[@]}"
+}
+
+function die {
+	# $1 - message on exit
+	# $2 - exit code
+	local _retcode=1
+	[[ -n $2 ]] && _retcode=$2
+	echo
+	>&2 echo $1
+	exit $_retcode
 }
 
 # Status functions
