@@ -109,6 +109,7 @@ execute 'Approving recipe quality' check_recipe_quality
 
 for package in "${packages[@]}"; do
 	execute 'Delete pkg' rm -rf "${PKGROOT}/${package}"/pkg
+	execute 'Delete src' rm -rf "${PKGROOT}/${package}"/src
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild

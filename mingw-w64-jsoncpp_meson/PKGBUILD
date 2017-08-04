@@ -14,15 +14,21 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-gcc"
              "${MINGW_PACKAGE_PREFIX}-python3"
             )
 options=('staticlibs' '!strip' '!buildflags')
-source=("${_realname}-${pkgver}.tar.gz"::"https://github.com/open-source-parsers/jsoncpp/archive/${pkgver}.tar.gz")
-sha256sums=('858db2faf348f89fdf1062bd3e79256772e897e7f17df73e0624edf004f2f9ac')
+source=("${_realname}-${pkgver}.tar.gz"::"https://github.com/open-source-parsers/jsoncpp/archive/${pkgver}.tar.gz"
+		"001-meson.patch")
+sha256sums=('858db2faf348f89fdf1062bd3e79256772e897e7f17df73e0624edf004f2f9ac'
+            'b612e3a53a2530a610298fd23cabe8d69cfc982d317144911e9ca5452361263f')
+prepare() {
+  cd ${_realname}-${pkgver}
+  patch -p1 -i ${srcdir}/001-meson.patch
+}
 
 build() {
   [[ -d ${srcdir}/build-${MINGW_CHOST} ]] && rm -rf ${srcdir}/build-${MINGW_CHOST}
   mkdir "${srcdir}/build-${MINGW_CHOST}"
   
   cd ${srcdir}/${_realname}-${pkgver}
-  meson.py --prefix=${MINGW_PREFIX}  --buildtype=plain ${srcdir}/build-${MINGW_CHOST}
+  meson.py --prefix=${MINGW_PREFIX}  --buildtype=plain ${srcdir}/build-${MINGW_CHOST} -D  JSONCPP_USE_SECURE_MEMORY=0
   ninja -v -C ${srcdir}/build-${MINGW_CHOST}
   
 }
