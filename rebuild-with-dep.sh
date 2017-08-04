@@ -36,7 +36,7 @@ add_dependencies
 #add_dependencies
 define_build_order || failure 'Could not determine build order'
 
-export MINGW_INSTALLS=mingw32
+#export MINGW_INSTALLS=mingw32
 
 # Build
 message 'Building packages' "${packages[@]}"

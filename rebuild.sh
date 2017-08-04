@@ -39,7 +39,7 @@ test -z "${packages}" && success 'No changes in package recipes'
 
 define_build_order || failure 'Could not determine build order'
 
-export MINGW_INSTALLS=mingw32
+#export MINGW_INSTALLS=mingw64
 
 # Build
 message 'Building packages' "${packages[@]}"
