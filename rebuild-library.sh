@@ -154,8 +154,10 @@ git_config() {
 package_installed() {
     local pkg="${1}"
 	local arch="${2}"
-
-	base_pkg=$(echo $pkg| cut -d'-' -f 3-)
+	
+    local pkgname provides
+    _package_info "${pkg}" pkgname provides
+	base_pkg=$(echo $pkgname| cut -d'-' -f 3-)
 
 	test -n "$(pacman -Qq | grep -x mingw-w64-${arch}-${base_pkg})" && return 1
 	test -n "$(pacman -Qq | grep -x mingw-w64-${arch}-${base_pkg/python/python3})" && return 1
