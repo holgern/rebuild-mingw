@@ -17,9 +17,9 @@ _status() {
     local status="${package:+${package}: }${2}"
     local items=("${@:3}")
     case "${type}" in
-        failure) local -n nameref_color='red';   title='[MSYS2 CI] FAILURE:' ;;
-        success) local -n nameref_color='green'; title='[MSYS2 CI] SUCCESS:' ;;
-        message) local -n nameref_color='cyan';  title='[MSYS2 CI]'
+        failure) local -n nameref_color='red';   title='[REBUILD] FAILURE:' ;;
+        success) local -n nameref_color='green'; title='[REBUILD] SUCCESS:' ;;
+        message) local -n nameref_color='cyan';  title='[REBUILD]'
     esac
     printf "\n${nameref_color}${title}${normal} ${status}\n\n"
     printf "${items:+\t%s\n}" "${items:+${items[@]}}"
@@ -157,6 +157,7 @@ package_installed() {
 	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg})" && return 1
 	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg/python/python3})" && return 1
 	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg/python/python2})" && return 1
+	message "already installed"
 	return 0
 }
 
@@ -172,14 +173,6 @@ execute(){
         else ${command%%:*} | ${command#*:} ${arguments[@]}
     fi || failure "${status} failed"
     cd - > /dev/null
-}
-
-# Update system
-update_system() {
-    repman add ci.msys 'https://dl.bintray.com/alexpux/msys2' || return 1
-    pacman --noconfirm --noprogressbar --sync --refresh --refresh --sysupgrade --sysupgrade || return 1
-    test -n "${DISABLE_QUALITY_CHECK}" && return 0 # TODO: remove this option when not anymore needed
-    pacman --noconfirm --needed --noprogressbar --sync ci.msys/pactoys
 }
 
 # Sort packages by dependency

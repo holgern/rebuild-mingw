@@ -29,6 +29,10 @@ readonly RUN_ARGS="$@"
 	echo "  help:"
 	echo "    --pkgroot=<path>           - specifies the packages root directory"
 	echo "    --arch=<i686|x86_64>       - specifies the architecture"
+    echo "    --do-not-reinstall         - stop if package is already installed"
+	echo "    --add_depend_pkg           - add dependend packages"
+	echo "    --define_build_order       - automatically define build order"
+	echo "    --simulate                 - do not build"
 	exit 0
 }
 
@@ -51,6 +55,10 @@ while [[ $# > 0 ]]; do
 		--pkgroot=*)
 			PKGROOT=$(realpath ${1/--pkgroot=/})
 		;;
+		--do-not-reinstall) NOT_REINSTALL=yes ;;
+		--add_depend_pkg) ADD_DEPEND_PKG=yes ;;
+		--define_build_order) DEFINE_BUILD_ORDER=yes ;;
+		--simulate) SIMULATE=yes ;;
 		*)
 			readonly PACKAGE=${1}
 		;;
@@ -60,23 +68,30 @@ done
 
 message 'Package root' "${PKGROOT}"
 
+
 packages=()
-
-
 packages+=("$PACKAGE")
- 
+
 
 
 
 message 'Processing changes' "${commits[@]}"
-#check_for_installed_packages
+
+[[ $ADD_DEPEND_PKG == yes ]] && {
+	add_dependencies
+}
+
+[[ $NOT_REINSTALL == yes ]] && {
+	execute 'Check for installed packages' check_for_installed_packages
+}
+
+
 test -z "${packages}" && success 'No changes in package recipes'
 
-#add_dependencies
-#add_dependencies
+[[ $DEFINE_BUILD_ORDER == yes ]] && {
+	define_build_order || failure 'Could not determine build order'
+}
 
-
-define_build_order || failure 'Could not determine build order'
 
 #export MINGW_INSTALLS=mingw64
 
@@ -84,6 +99,11 @@ define_build_order || failure 'Could not determine build order'
 message 'Building packages' "${packages[@]}"
 #execute 'Updating system' update_system
 execute 'Approving recipe quality' check_recipe_quality
+
+[[ $SIMULATE == yes ]] && {
+	success 'Simulate only'
+}
+
 for package in "${packages[@]}"; do
 	execute 'Delete pkg' rm -rf "${PKGROOT}/${package}"/pkg
 
