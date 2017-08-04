@@ -104,9 +104,10 @@ _build_add_depencies() {
 # Add depencies package to build after required dependencies
 _build_remove_installed_packages() {
     local package="${1}"
+	local arch="${2}"
 	#message "${1}"
 
-    package_installed "${package}" && sorted_packages+=("${package}")
+    package_installed "${package}" "${arch}" && sorted_packages+=("${package}")
 }
 
 
@@ -152,12 +153,14 @@ git_config() {
 
 package_installed() {
     local pkg="${1}"
+	local arch="${2}"
+
 	base_pkg=$(echo $pkg| cut -d'-' -f 3-)
 
-	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg})" && return 1
-	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg/python/python3})" && return 1
-	test -n "$(pacman -Qq | grep -x mingw-w64-i686-${base_pkg/python/python2})" && return 1
-	message "already installed"
+	test -n "$(pacman -Qq | grep -x mingw-w64-${arch}-${base_pkg})" && return 1
+	test -n "$(pacman -Qq | grep -x mingw-w64-${arch}-${base_pkg/python/python3})" && return 1
+	test -n "$(pacman -Qq | grep -x mingw-w64-${arch}-${base_pkg/python/python2})" && return 1
+	message "mingw-w64-${arch}-${base_pkg} is not installed on ${arch}"
 	return 0
 }
 
@@ -194,8 +197,9 @@ add_dependencies() {
 
 check_for_installed_packages() {
     local sorted_packages=()
+	local arch="${1}"
     for unsorted_package in "${packages[@]}"; do
-        _build_remove_installed_packages "${unsorted_package}"
+        _build_remove_installed_packages "${unsorted_package}"  "${arch}"
     done
     packages=("${sorted_packages[@]}")
 }

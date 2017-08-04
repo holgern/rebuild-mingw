@@ -38,10 +38,11 @@ readonly RUN_ARGS="$@"
 
 # **************************************************************************
 PKGROOT=${TOP_DIR}
+BUILD_ARCHITECTURE="x86_64"
 while [[ $# > 0 ]]; do
 	case $1 in
 		--arch=*)
-			readonly BUILD_ARCHITECTURE=${1/--arch=/}
+			BUILD_ARCHITECTURE=${1/--arch=/}
 			case $BUILD_ARCHITECTURE in
 				i686)
 				export MINGW_INSTALLS=mingw32
@@ -98,7 +99,6 @@ packages+=("mingw-w64-ca-certificates")
 packages+=("mingw-w64-curl")
 
 
-
 message 'Processing changes' "${commits[@]}"
 
 [[ $ADD_DEPEND_PKG == yes ]] && {
@@ -107,7 +107,7 @@ message 'Processing changes' "${commits[@]}"
 
 
 [[ $NOT_REINSTALL == yes ]] && {
-	execute 'Check for installed packages' check_for_installed_packages
+	execute 'Check for installed packages' check_for_installed_packages "${BUILD_ARCHITECTURE}"
 }
 
 
