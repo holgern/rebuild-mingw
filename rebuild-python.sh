@@ -84,8 +84,9 @@ packages+=("mingw-w64-python-setuptools")
 packages+=("mingw-w64-python-six")
 
 packages+=("mingw-w64-python-beaker")
-packages+=("mingw-w64-python-mako")
 packages+=("mingw-w64-python-markupsafe")
+packages+=("mingw-w64-python-mako")
+
 
 packages+=("mingw-w64-python-babel")
 packages+=("mingw-w64-python-certifi")
