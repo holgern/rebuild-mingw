@@ -71,13 +71,11 @@ packages=()
 
 
 packages+=("mingw-w64-ninja")
-packages+=("mingw-w64-python3")
-packages+=("mingw-w64-sqlite3")
 
 packages+=("mingw-w64-xz")
-
+packages+=("mingw-w64-sqlite3")
+packages+=("mingw-w64-python3")
 packages+=("mingw-w64-meson")
-
 message 'Processing changes' "${commits[@]}"
 
 [[ $ADD_DEPEND_PKG == yes ]] && {
