@@ -70,8 +70,9 @@ message 'Package root' "${PKGROOT}"
 packages=()
 
 packages+=("mingw-w64-libxml2") 
-packages+=("mingw-w64-libgcrypt")
 packages+=("mingw-w64-libgpg-error")
+packages+=("mingw-w64-libgcrypt")
+
 packages+=("mingw-w64-libxslt")
 packages+=("mingw-w64-python3")
 packages+=("mingw-w64-python2")
