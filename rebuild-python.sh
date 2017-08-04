@@ -105,7 +105,7 @@ packages+=("mingw-w64-python-sphinx-alabaster-theme")
 packages+=("mingw-w64-python-sphinx_rtd_theme")
 packages+=("mingw-w64-python-sphinxcontrib-websupport")
 
-packages+=("mingw-w64-python-sphinx")
+
 
 packages+=("mingw-w64-python-pyasn1")
 packages+=("mingw-w64-python-pycparser")
@@ -125,7 +125,7 @@ packages+=("mingw-w64-python-mock")
 packages+=("mingw-w64-python-urllib3")
 packages+=("mingw-w64-python-whoosh")
 packages+=("mingw-w64-python2-typing")
-
+packages+=("mingw-w64-python-sphinx")
 message 'Processing changes' "${commits[@]}"
 
 [[ $ADD_DEPEND_PKG == yes ]] && {
