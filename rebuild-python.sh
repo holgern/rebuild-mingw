@@ -87,7 +87,7 @@ packages+=("mingw-w64-python-beaker")
 packages+=("mingw-w64-python-markupsafe")
 packages+=("mingw-w64-python-mako")
 
-
+packages+=("mingw-w64-python-pytz")
 packages+=("mingw-w64-python-babel")
 packages+=("mingw-w64-python-certifi")
 packages+=("mingw-w64-python-chardet")
@@ -97,7 +97,7 @@ packages+=("mingw-w64-python-idna")
 packages+=("mingw-w64-python-imagesize")
 packages+=("mingw-w64-python-jinja")
 packages+=("mingw-w64-python-pygments")
-packages+=("mingw-w64-python-pytz")
+
 packages+=("mingw-w64-python-requests")
 packages+=("mingw-w64-python-six")
 packages+=("mingw-w64-python-snowballstemmer")
