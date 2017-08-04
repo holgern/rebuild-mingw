@@ -73,11 +73,12 @@ packages=()
 
 
 packages+=("mingw-w64-libffi")
-
+packages+=("mingw-w64-libiconv")
+packages+=("mingw-w64-sqlite3")
 
 packages+=("mingw-w64-xapian-core")
-#packages+=("mingw-w64-clang35")
-packages+=("mingw-w64-doxygen_withoutQtClang")
+packages+=("mingw-w64-clang")
+packages+=("mingw-w64-doxygen_withoutQt")
 
  
 
