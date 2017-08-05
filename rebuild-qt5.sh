@@ -86,6 +86,8 @@ packages+=("mingw-w64-SDL")
 packages+=("mingw-w64-zziplib")
 
 packages+=("mingw-w64-assimp")
+packages+=("mingw-w64-nasm")
+
 packages+=("mingw-w64-libjpeg-turbo")
 packages+=("mingw-w64-libtiff")
 packages+=("mingw-w64-lcms2")
