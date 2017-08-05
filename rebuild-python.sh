@@ -77,10 +77,11 @@ packages+=("mingw-w64-libxslt")
 packages+=("mingw-w64-python3")
 packages+=("mingw-w64-python2")
 packages+=("mingw-w64-python-csssselect") 
-
+packages+=("mingw-w64-python2-typing")
 packages+=("mingw-w64-python-lxml") 
 
 packages+=("mingw-w64-python-setuptools")
+packages+=("mingw-w64-python-whoosh")
 packages+=("mingw-w64-python-six")
 
 packages+=("mingw-w64-python-beaker")
@@ -101,6 +102,8 @@ packages+=("mingw-w64-python-pygments")
 packages+=("mingw-w64-python-requests")
 packages+=("mingw-w64-python-six")
 packages+=("mingw-w64-python-snowballstemmer")
+
+
 packages+=("mingw-w64-python-sphinx-alabaster-theme")
 packages+=("mingw-w64-python-sphinx_rtd_theme")
 packages+=("mingw-w64-python-sphinxcontrib-websupport")
@@ -122,10 +125,11 @@ packages+=("mingw-w64-python-ndg-httpsclient")
 packages+=("mingw-w64-python-funcsigs")
 packages+=("mingw-w64-python-pbr")
 packages+=("mingw-w64-python-mock")
-packages+=("mingw-w64-python-urllib3")
-packages+=("mingw-w64-python-whoosh")
-packages+=("mingw-w64-python2-typing")
 packages+=("mingw-w64-python-sphinx")
+packages+=("mingw-w64-python-urllib3")
+
+
+
 message 'Processing changes' "${commits[@]}"
 
 [[ $ADD_DEPEND_PKG == yes ]] && {
