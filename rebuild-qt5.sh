@@ -91,15 +91,37 @@ packages+=("mingw-w64-nasm")
 packages+=("mingw-w64-libjpeg-turbo")
 packages+=("mingw-w64-libtiff")
 packages+=("mingw-w64-lcms2")
-
+packages+=("mingw-w64-libpng")
 
 packages+=("mingw-w64-libmng")
 packages+=("mingw-w64-libwebp")
+packages+=("mingw-w64-wineditline")
+packages+=("mingw-w64-pcre")
+packages+=("mingw-w64-glib2")
+packages+=("mingw-w64-graphite2")
+packages+=("mingw-w64-icu")
+packages+=("mingw-w64-pixman")
 
+packages+=("mingw-w64-freetype_withoutHarfbuzz")
+#packages+=("mingw-w64-harfbuzz_withoutIntrospection")
+
+#packages+=("mingw-w64-gobject-introspection")
+#packages+=("mingw-w64-harfbuzz")
+packages+=("mingw-w64-freeglut")
+packages+=("mingw-w64-dbus")
+packages+=("mingw-w64-fontconfig")
+packages+=("mingw-w64-jasper")
+
+packages+=("mingw-w64-libtommath")
+packages+=("mingw-w64-libatomic_ops")
+#packages+=("mingw-w64-firebird2-git")
+packages+=("mingw-w64-libmariadbclient")
+packages+=("mingw-w64-postgresql")
 
 packages+=("mingw-w64-qt5")
 
  
+
 
 
 message 'Processing changes' "${commits[@]}"
