@@ -102,7 +102,7 @@ packages+=("mingw-w64-graphite2")
 packages+=("mingw-w64-icu")
 packages+=("mingw-w64-pixman")
 
-packages+=("mingw-w64-freetype_withoutHarfbuzz")
+#packages+=("mingw-w64-freetype_withoutHarfbuzz")
 #packages+=("mingw-w64-harfbuzz_withoutIntrospection")
 
 #packages+=("mingw-w64-gobject-introspection")

@@ -1,2 +1,8 @@
-20a21
-> jsoncpp_cdata.set('JSONCPP_USE_SECURE_MEMORY', 0)
+--- jsoncpp-1.8.1-orig/meson.build	2013-03-24 23:12:45 +0400
++++ jsoncpp-1.8.1/meson.build	2013-03-24 23:30:06 +0400
+@@ -19,4 +19,5 @@
+ jsoncpp_cdata.set('JSONCPP_VERSION_MINOR', jsoncpp_minor_version)
+ jsoncpp_cdata.set('JSONCPP_VERSION_PATCH', jsoncpp_patch_version)
++jsoncpp_cdata.set('JSONCPP_USE_SECURE_MEMORY', 0)
+ 
+ jsoncpp_gen_sources = configure_file(

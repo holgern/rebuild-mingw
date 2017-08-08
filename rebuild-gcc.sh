@@ -70,17 +70,55 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
+#packages+=("mingw-w64-gcc")
+packages+=("mingw-w64-winpthreads-git")
+packages+=("mingw-w64-tools-git")
+packages+=("mingw-w64-headers-git")
+packages+=("mingw-w64-crt-git")
 
+
+packages+=("mingw-w64-expat")
+packages+=("mingw-w64-gettext")
+packages+=("mingw-w64-libiconv")
+packages+=("mingw-w64-libtre-git")
+packages+=("mingw-w64-ncurses")
+packages+=("mingw-w64-libsystre")
+
+
+packages+=("mingw-w64-ca-certificates")
+packages+=("mingw-w64-p11-kit")
+packages+=("mingw-w64-openssl")
+
+packages+=("mingw-w64-bzip2")
+packages+=("mingw-w64-gdbm")
 
 packages+=("mingw-w64-libffi")
-packages+=("mingw-w64-libiconv")
-packages+=("mingw-w64-sqlite3")
+packages+=("mingw-w64-termcap")
+packages+=("mingw-w64-readline")
+packages+=("mingw-w64-zlib")
 
-packages+=("mingw-w64-xapian-core")
-packages+=("mingw-w64-clang")
-packages+=("mingw-w64-doxygen_withoutQt")
+packages+=("mingw-w64-tcl")
+packages+=("mingw-w64-pkg-config")
+packages+=("mingw-w64-tk")
+packages+=("mingw-w64-python2")
+packages=()
+packages+=("mingw-w64-xz")
+packages+=("mingw-w64-gdb")
+packages+=("mingw-w64-gmp")
+packages+=("mingw-w64-isl")
+packages+=("mingw-w64-libmangle-git")
+packages+=("mingw-w64-libtasn1")
 
- 
+#packages+=("mingw-w64-libwinpthread-git")
+packages+=("mingw-w64-make")
+packages+=("mingw-w64-mpfr")
+packages+=("mingw-w64-mpc")
+packages+=("mingw-w64-windows-default-manifest")
+packages+=("mingw-w64-winstorecompat-git")
+
+
+
+
 
 
 message 'Processing changes' "${commits[@]}"
@@ -121,8 +159,8 @@ for package in "${packages[@]}"; do
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild
     execute 'Building source' makepkg --noconfirm --force --noprogressbar --skippgpcheck --allsource --config '/etc/makepkg_mingw64.conf'
     execute 'Installing' pacman --noprogressbar --noconfirm --upgrade *.pkg.tar.xz
-    deploy_enabled && mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
-    deploy_enabled && mv "${PKGROOT}/${package}"/*.src.tar.gz $TOP_DIR/artifacts_src
+    deploy_enabled && mv "${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
+    deploy_enabled && mv "${package}"/*.src.tar.gz $TOP_DIR/artifacts
     unset package
 done
 
