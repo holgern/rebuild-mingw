@@ -70,7 +70,7 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-
+        packages+=("mingw-w64-docbook-xml")
 		packages+=("mingw-w64-pango")
         packages+=("mingw-w64-gdk-pixbuf2")
         packages+=("mingw-w64-libcroco")
@@ -86,7 +86,7 @@ packages=()
         packages+=("mingw-w64-nss")
         packages+=("mingw-w64-openjpeg")
         packages+=("mingw-w64-openjpeg2")
-        packages+=("mingw-w64-docbook-xml")
+        
         packages+=("mingw-w64-poppler-data")
         packages+=("mingw-w64-shared-mime-info")
         packages+=("mingw-w64-json-glib")

@@ -25,3 +25,4 @@ mv artifacts_src/* artifacts_src_old
 ./rebuild-cairo.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
 ./rebuild-cairo-second-run.sh --pkgroot=/c/MINGW-packages/
 ./rebuild-qt5.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
+./rebuild-qt5-second-run.sh --pkgroot=/c/MINGW-packages/

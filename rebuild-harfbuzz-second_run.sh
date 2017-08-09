@@ -71,6 +71,7 @@ message 'Package root' "${PKGROOT}"
 	packages=()
 	packages+=("mingw-w64-freetype")
 	packages+=("mingw-w64-fontconfig")
+	packages+=("mingw-w64-cairo_minimal")
 
 
 #packages+=("mingw-w64-cairo_withoutPoppler")
