@@ -76,31 +76,53 @@ packages+=("mingw-w64-libgcrypt")
 packages+=("mingw-w64-libxslt")
 packages+=("mingw-w64-python3")
 packages+=("mingw-w64-python2")
+
+
+packages+=("mingw-w64-python-setuptools")
+packages+=("mingw-w64-python-colorama")		
+packages+=("mingw-w64-python-docutils")
+packages+=("mingw-w64-python-imagesize")
+packages+=("mingw-w64-python-markupsafe")
+packages+=("mingw-w64-python-jinja")
+packages+=("mingw-w64-python-pygments")
+
+packages+=("mingw-w64-python-requests")
+packages+=("mingw-w64-python-six")
+
+packages+=("mingw-w64-python-sphinx")
+packages+=("mingw-w64-python-pyasn1")
+packages+=("mingw-w64-python-pycparser")
+
+packages+=("mingw-w64-python-cffi")
+packages+=("mingw-w64-python-idna")
+
+packages+=("mingw-w64-python-asn1crypto")
+packages+=("mingw-w64-python2-enum34")
+packages+=("mingw-w64-python2-ipaddress")
+packages+=("mingw-w64-python-cryptography")
+
+packages+=("mingw-w64-python-pyopenssl")
+
+packages+=("mingw-w64-python-ndg-httpsclient")
+packages+=("mingw-w64-python-funcsigs")
+packages+=("mingw-w64-python-pbr")
+packages+=("mingw-w64-python-mock")
+packages+=("mingw-w64-python-urllib3")
+
+		
 packages+=("mingw-w64-python-csssselect") 
 packages+=("mingw-w64-python2-typing")
 packages+=("mingw-w64-python-lxml") 
-
-packages+=("mingw-w64-python-setuptools")
 packages+=("mingw-w64-python-whoosh")
-packages+=("mingw-w64-python-six")
-
 packages+=("mingw-w64-python-beaker")
-packages+=("mingw-w64-python-markupsafe")
 packages+=("mingw-w64-python-mako")
 
 packages+=("mingw-w64-python-pytz")
 packages+=("mingw-w64-python-babel")
 packages+=("mingw-w64-python-certifi")
 packages+=("mingw-w64-python-chardet")
-packages+=("mingw-w64-python-colorama")
-packages+=("mingw-w64-python-docutils")
-packages+=("mingw-w64-python-idna")
-packages+=("mingw-w64-python-imagesize")
-packages+=("mingw-w64-python-jinja")
-packages+=("mingw-w64-python-pygments")
 
-packages+=("mingw-w64-python-requests")
-packages+=("mingw-w64-python-six")
+
 packages+=("mingw-w64-python-snowballstemmer")
 
 
@@ -108,25 +130,6 @@ packages+=("mingw-w64-python-sphinx-alabaster-theme")
 packages+=("mingw-w64-python-sphinx_rtd_theme")
 packages+=("mingw-w64-python-sphinxcontrib-websupport")
 
-
-
-packages+=("mingw-w64-python-pyasn1")
-packages+=("mingw-w64-python-pycparser")
-packages+=("mingw-w64-python-cffi")
-packages+=("mingw-w64-python-asn1crypto")
-
-packages+=("mingw-w64-python2-enum34")
-packages+=("mingw-w64-python2-ipaddress")
-
-packages+=("mingw-w64-python-cryptography")
-
-packages+=("mingw-w64-python-pyopenssl")
-packages+=("mingw-w64-python-ndg-httpsclient")
-packages+=("mingw-w64-python-funcsigs")
-packages+=("mingw-w64-python-pbr")
-packages+=("mingw-w64-python-mock")
-packages+=("mingw-w64-python-sphinx")
-packages+=("mingw-w64-python-urllib3")
 
 
 

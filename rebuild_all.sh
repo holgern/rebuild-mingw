@@ -14,10 +14,9 @@ mkdir artifacts_src
 mv artifacts_src/* artifacts_src_old
 
 ./fresh_start.sh
-
+./rebuild-gcc.sh
 ./rebuild-curl.sh
 ./rebuild-cmake.sh
 ./rebuild-cmake.sh
 ./rebuild-python.sh
 ./rebuild-doxygen.sh
-./rebuild-cairo.sh

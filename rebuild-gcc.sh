@@ -101,7 +101,7 @@ packages+=("mingw-w64-tcl")
 packages+=("mingw-w64-pkg-config")
 packages+=("mingw-w64-tk")
 packages+=("mingw-w64-python2")
-packages=()
+
 packages+=("mingw-w64-xz")
 packages+=("mingw-w64-gdb")
 packages+=("mingw-w64-gmp")
