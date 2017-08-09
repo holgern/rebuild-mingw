@@ -70,73 +70,32 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-packages+=("mingw-w64-wineditline")
-packages+=("mingw-w64-graphite2")
-packages+=("mingw-w64-libpng")
-packages+=("mingw-w64-pixman")
-packages+=("mingw-w64-pcre")
-packages+=("mingw-w64-glib2")
 
-
-packages+=("mingw-w64-icu")
-
-#packages+=("mingw-w64-freetype_withoutHarfbuzz")
-#packages+=("mingw-w64-fontconfig")
-
-packages+=("mingw-w64-gnome-common")
-packages+=("mingw-w64-atk")
-packages+=("mingw-w64-dbus")
-
-packages+=("mingw-w64-freeglut")
-
-packages+=("mingw-w64-hicolor-icon-theme")
-packages+=("mingw-w64-nasm")
-
-packages+=("mingw-w64-libjpeg-turbo")
-packages+=("mingw-w64-jasper")
-
-
-packages+=("mingw-w64-libtiff")
-packages+=("mingw-w64-lcms2")
-
-
-packages+=("mingw-w64-libcroco")
-packages+=("mingw-w64-libpaper")
-
-
-packages+=("mingw-w64-gdk-pixbuf2")
-packages+=("mingw-w64-nspr")
-
-
-packages+=("mingw-w64-openjpeg2")
-packages+=("mingw-w64-pango")
-packages+=("mingw-w64-docbook-xml")
-packages+=("mingw-w64-vala")
-packages+=("mingw-w64-poppler-data")
-packages+=("mingw-w64-shared-mime-info")
-
-packages+=("mingw-w64-json-glib")
-packages+=("mingw-w64-libepoxy")
-packages+=("mingw-w64-gtk3")
-
-
-
-
-packages+=("mingw-w64-nss")
-packages+=("mingw-w64-openjpeg")
-
-
-
-packages+=("mingw-w64-ghostscript")
-packages+=("mingw-w64-gtk2")
-packages+=("mingw-w64-librsvg")
-packages+=("mingw-w64-libspectre")
-
-packages+=("mingw-w64-adwaita-icon-theme")
-packages+=("mingw-w64-gobject-introspection")
-
-packages+=("mingw-w64-poppler")
-
+		packages+=("mingw-w64-pango")
+        packages+=("mingw-w64-gdk-pixbuf2")
+        packages+=("mingw-w64-libcroco")
+        packages+=("mingw-w64-vala")
+        packages+=("mingw-w64-librsvg")
+        packages+=("mingw-w64-adwaita-icon-theme")
+        packages+=("mingw-w64-gnome-common")
+        packages+=("mingw-w64-atk")
+        packages+=("mingw-w64-dbus")
+        packages+=("mingw-w64-lcms2")
+        packages+=("mingw-w64-libpaper")
+        packages+=("mingw-w64-nspr")
+        packages+=("mingw-w64-nss")
+        packages+=("mingw-w64-openjpeg")
+        packages+=("mingw-w64-openjpeg2")
+        packages+=("mingw-w64-docbook-xml")
+        packages+=("mingw-w64-poppler-data")
+        packages+=("mingw-w64-shared-mime-info")
+        packages+=("mingw-w64-json-glib")
+        packages+=("mingw-w64-libepoxy")
+        packages+=("mingw-w64-gtk3")
+        packages+=("mingw-w64-ghostscript")
+        packages+=("mingw-w64-gtk2")
+        packages+=("mingw-w64-libspectre")
+		packages+=("mingw-w64-poppler_withoutQt")
 
 message 'Processing changes' "${commits[@]}"
 
@@ -154,17 +113,10 @@ if test -z "${packages}"; then
 	packages=()
 	
 
-packages+=("mingw-w64-gobject-introspection")
 
-packages+=("mingw-w64-poppler")
+   packages+=("mingw-w64-cairo")
+   packages+=("mingw-w64-harfbuzz")
 
-	#packages+=("mingw-w64-fontconfig")
-	#packages+=("mingw-w64-freetype")
-	#packages+=("mingw-w64-harfbuzz")
-	#packages+=("mingw-w64-freetype")
-	#packages+=("mingw-w64-cairo")
-	#packages+=("mingw-w64-gobject")
-	#packages+=("mingw-w64-poppler")
 else
 [[ $DEFINE_BUILD_ORDER == yes ]] && {
 	define_build_order || failure 'Could not determine build order'

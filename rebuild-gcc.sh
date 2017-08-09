@@ -159,8 +159,8 @@ for package in "${packages[@]}"; do
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild
     execute 'Building source' makepkg --noconfirm --force --noprogressbar --skippgpcheck --allsource --config '/etc/makepkg_mingw64.conf'
     execute 'Installing' pacman --noprogressbar --noconfirm --upgrade *.pkg.tar.xz
-    deploy_enabled && mv "${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
-    deploy_enabled && mv "${package}"/*.src.tar.gz $TOP_DIR/artifacts
+    deploy_enabled && mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
+    deploy_enabled && mv "${PKGROOT}/${package}"/*.src.tar.gz $TOP_DIR/artifacts_src
     unset package
 done
 

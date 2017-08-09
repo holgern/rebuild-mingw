@@ -70,17 +70,34 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
+packages+=("mingw-w64-wineditline")
+packages+=("mingw-w64-graphite2")
+packages+=("mingw-w64-libpng")
+packages+=("mingw-w64-pixman")
+packages+=("mingw-w64-pcre")
+packages+=("mingw-w64-glib2")
+packages+=("mingw-w64-icu")
+packages+=("mingw-w64-freetype_withoutHarfbuzz")
+packages+=("mingw-w64-fontconfig")
 
 
-packages+=("mingw-w64-libffi")
-packages+=("mingw-w64-libiconv")
-packages+=("mingw-w64-sqlite3")
 
-packages+=("mingw-w64-xapian-core")
-packages+=("mingw-w64-clang")
-packages+=("mingw-w64-doxygen_withoutQt")
+        packages+=("mingw-w64-hicolor-icon-theme")
+        packages+=("mingw-w64-freeglut")
+        packages+=("mingw-w64-nasm")
+        packages+=("mingw-w64-libjpeg-turbo")
+        packages+=("mingw-w64-jasper")
+        packages+=("mingw-w64-libtiff")
+		
+		packages+=("mingw-w64-cairo_minimal")
+		packages+=("mingw-w64-gobject-introspection")
+		packages+=("mingw-w64-harfbuzz")
+		
 
- 
+
+
+
+#packages+=("mingw-w64-cairo_withoutPoppler")
 
 
 message 'Processing changes' "${commits[@]}"
@@ -95,12 +112,24 @@ message 'Processing changes' "${commits[@]}"
 }
 
 
-test -z "${packages}" && success 'No changes in package recipes'
+if test -z "${packages}"; then
+	packages=()
+packages+=("mingw-w64-freetype")
+packages+=("mingw-w64-fontconfig")
 
+        packages+=("mingw-w64-hicolor-icon-theme")
+        packages+=("mingw-w64-freeglut")
+        packages+=("mingw-w64-nasm")
+        packages+=("mingw-w64-libjpeg-turbo")
+        packages+=("mingw-w64-jasper")
+        packages+=("mingw-w64-libtiff")
+
+      
+else
 [[ $DEFINE_BUILD_ORDER == yes ]] && {
 	define_build_order || failure 'Could not determine build order'
 }
-
+fi
 
 #export MINGW_INSTALLS=mingw64
 
@@ -118,7 +147,6 @@ for package in "${packages[@]}"; do
     rm -rf "${PKGROOT}/${package}"/src
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
-	deploy_enabled && mv  "${PKGROOT}/${package}"/*.src.tar.gz $TOP_DIR/artifacts_src
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild
     execute 'Building source' makepkg --noconfirm --force --noprogressbar --skippgpcheck --allsource --config '/etc/makepkg_mingw64.conf'
     execute 'Installing' pacman --noprogressbar --noconfirm --upgrade *.pkg.tar.xz
