@@ -24,6 +24,6 @@ git_config user.name  'MSYS2 Continuous Integration'
 #list_commits  || failure 'Could not detect added commits'
 #list_packages || failure 'Could not detect changed files'
 
-pacman -R $(pacman -Qq | grep mingw)
+pacman -R $(pacman -Qq | grep mingw-w64)
 pacman -Syu
 pacman -S mingw-w64-i686-toolchain mingw-w64-x86_64-toolchain

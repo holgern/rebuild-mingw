@@ -67,14 +67,11 @@ done
 
 message 'Package root' "${PKGROOT}"
 
-packages=()
+	packages=()
+	packages+=("mingw-w64-cmake")
+	packages+=("mingw-w64-poppler")
+	packages+=("mingw-w64-doxygen")
 
-
-packages+=("mingw-w64-ninja")
-packages+=("mingw-w64-xz")
-packages+=("mingw-w64-sqlite3")
-packages+=("mingw-w64-python3")
-packages+=("mingw-w64-meson")
 
 
 message 'Processing changes' "${commits[@]}"
@@ -89,12 +86,13 @@ message 'Processing changes' "${commits[@]}"
 }
 
 
-test -z "${packages}" && success 'No changes in package recipes'
-
+if test -z "${packages}"; then
+	failure 'Run script without --do-not-reinstall'
+else
 [[ $DEFINE_BUILD_ORDER == yes ]] && {
 	define_build_order || failure 'Could not determine build order'
 }
-
+fi
 
 #export MINGW_INSTALLS=mingw64
 
@@ -108,15 +106,15 @@ execute 'Approving recipe quality' check_recipe_quality
 }
 
 for package in "${packages[@]}"; do
-	execute 'Delete pkg' rm -rf "${PKGROOT}/${package}"/pkg
-	execute 'Delete src' rm -rf "${PKGROOT}/${package}"/src
+	rm -rf "${PKGROOT}/${package}"/pkg
+    rm -rf "${PKGROOT}/${package}"/src
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild
     execute 'Building source' makepkg --noconfirm --force --noprogressbar --skippgpcheck --allsource --config '/etc/makepkg_mingw64.conf'
     execute 'Installing' pacman --noprogressbar --noconfirm --upgrade *.pkg.tar.xz
-    deploy_enabled && mv "${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
-    deploy_enabled && mv "${package}"/*.src.tar.gz $TOP_DIR/artifacts
+    deploy_enabled && mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
+    deploy_enabled && mv "${PKGROOT}/${package}"/*.src.tar.gz $TOP_DIR/artifacts_src
     unset package
 done
 

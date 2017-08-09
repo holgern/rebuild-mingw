@@ -13,8 +13,8 @@ mkdir artifacts_src_old
 mkdir artifacts_src
 mv artifacts_src/* artifacts_src_old
 
-./fresh_start.sh
-./rebuild-gcc.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
+
+./rebuild-gcc.sh --pkgroot=/c/MINGW-packages/ 
 ./rebuild-curl.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
 ./rebuild-cmake.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
 ./rebuild-cmake-second-run.sh --pkgroot=/c/MINGW-packages/
