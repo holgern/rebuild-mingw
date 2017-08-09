@@ -112,24 +112,11 @@ message 'Processing changes' "${commits[@]}"
 }
 
 
-if test -z "${packages}"; then
-	packages=()
-packages+=("mingw-w64-freetype")
-packages+=("mingw-w64-fontconfig")
+test -z "${packages}" && success 'No changes in package recipes'
 
-        packages+=("mingw-w64-hicolor-icon-theme")
-        packages+=("mingw-w64-freeglut")
-        packages+=("mingw-w64-nasm")
-        packages+=("mingw-w64-libjpeg-turbo")
-        packages+=("mingw-w64-jasper")
-        packages+=("mingw-w64-libtiff")
-
-      
-else
 [[ $DEFINE_BUILD_ORDER == yes ]] && {
 	define_build_order || failure 'Could not determine build order'
 }
-fi
 
 #export MINGW_INSTALLS=mingw64
 
