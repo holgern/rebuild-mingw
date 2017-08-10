@@ -72,12 +72,12 @@ message 'Package root' "${PKGROOT}"
 
 
    packages+=("mingw-w64-cairo")
-   packages+=("mingw-w64-harfbuzz")
-   packages+=("mingw-w64-pango")
-	packages+=("mingw-w64-gtk3")
-	packages+=("mingw-w64-ghostscript")
-	packages+=("mingw-w64-gtk2")
-	packages+=("mingw-w64-poppler_withoutQt")
+   #packages+=("mingw-w64-harfbuzz")
+   #packages+=("mingw-w64-pango")
+	#packages+=("mingw-w64-gtk3")
+	#packages+=("mingw-w64-ghostscript")
+	#packages+=("mingw-w64-gtk2")
+	#packages+=("mingw-w64-poppler_withoutQt")
 
 message 'Processing changes' "${commits[@]}"
 

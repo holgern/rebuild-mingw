@@ -110,13 +110,14 @@ packages+=("mingw-w64-jasper")
 
 packages+=("mingw-w64-libtommath")
 packages+=("mingw-w64-libatomic_ops")
+#firebird2-git is broken
 #packages+=("mingw-w64-firebird2-git")
 packages+=("mingw-w64-libmariadbclient")
 packages+=("mingw-w64-postgresql")
 
 packages+=("mingw-w64-qt5")
-packages+=("mingw-w64-qbs")
-packages+=("mingw-w64-qtcreator")
+#packages+=("mingw-w64-qbs")
+#packages+=("mingw-w64-qtcreator")
 
 
 
