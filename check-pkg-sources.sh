@@ -1137,7 +1137,7 @@ for package in "${packages[@]}"; do
     rm -rf "${PKGROOT}/${package}"/src
 
 
-    execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --nodeps --cleanbuild --nobuild --noarchive 
+    execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --nodeps --cleanbuild --nobuild --noarchive --clean
 
     unset package
 done
