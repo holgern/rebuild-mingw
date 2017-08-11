@@ -116,8 +116,8 @@ packages+=("mingw-w64-libmariadbclient")
 packages+=("mingw-w64-postgresql")
 
 packages+=("mingw-w64-qt5")
-#packages+=("mingw-w64-qbs")
-#packages+=("mingw-w64-qtcreator")
+packages+=("mingw-w64-qbs")
+packages+=("mingw-w64-qtcreator")
 
 
 

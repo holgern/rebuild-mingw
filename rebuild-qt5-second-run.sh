@@ -71,6 +71,7 @@ message 'Package root' "${PKGROOT}"
 	packages+=("mingw-w64-cmake")
 	packages+=("mingw-w64-poppler")
 	packages+=("mingw-w64-doxygen")
+	
 
 
 
