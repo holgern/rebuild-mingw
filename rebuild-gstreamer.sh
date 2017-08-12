@@ -147,6 +147,10 @@ packages+=("mingw-w64-xvidcore")
 packages+=("mingw-w64-schroedinger")
 packages+=("mingw-w64-x265")
 
+packages+=("mingw-w64-cppunit")
+packages+=("mingw-w64-libcaca")
+packages+=("mingw-w64-libvpx")
+packages+=("mingw-w64-wavpack")
 packages+=("mingw-w64-ffmpeg")
 
 packages+=("mingw-w64-hdf5")
@@ -162,7 +166,6 @@ packages+=("mingw-w64-vtk")
 packages+=("mingw-w64-openblas")
 
 packages+=("mingw-w64-eigen3")
-
 packages+=("mingw-w64-python-nose")
 packages+=("mingw-w64-python-numpy")
 
@@ -176,9 +179,7 @@ packages+=("mingw-w64-zbar")
 
 packages+=("mingw-w64-daala-git")
 
-
 packages+=("mingw-w64-gst-plugins-good")
-
 packages+=("mingw-w64-gst-plugins-bad")
 packages+=("mingw-w64-gst-plugins-ugly")
 packages+=("mingw-w64-gst-libav")
