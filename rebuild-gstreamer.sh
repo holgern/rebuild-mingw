@@ -94,6 +94,10 @@ packages+=("mingw-w64-portaudio")
 packages+=("mingw-w64-celt")
 packages+=("mingw-w64-chromaprint")
 
+packages+=("mingw-w64-gstreamer")
+packages+=("mingw-w64-gst-plugins-base")
+packages+=("mingw-w64-cogl")
+
 packages+=("mingw-w64-clutter")
 
 #packages+=("mingw-w64-daala-git")
@@ -132,6 +136,9 @@ packages+=("mingw-w64-opencore-amr")
 packages+=("mingw-w64-szip")
 packages+=("mingw-w64-x264-git")
 packages+=("mingw-w64-xvidcore")
+packages+=("mingw-w64-schroedinger")
+packages+=("mingw-w64-x265")
+
 packages+=("mingw-w64-ffmpeg")
 
 packages+=("mingw-w64-hdf5")
@@ -154,16 +161,16 @@ packages+=("mingw-w64-python-numpy")
 packages+=("mingw-w64-opencv")
 
 packages+=("mingw-w64-openh264")
-packages+=("mingw-w64-schroedinger")
+
 packages+=("mingw-w64-soundtouch")
-packages+=("mingw-w64-x265")
+
 packages+=("mingw-w64-zbar")
 
 packages+=("mingw-w64-daala-git")
 
-packages+=("mingw-w64-gstreamer")
-packages+=("mingw-w64-gst-plugins-base")
+
 packages+=("mingw-w64-gst-plugins-good")
+
 packages+=("mingw-w64-gst-plugins-bad")
 packages+=("mingw-w64-gst-plugins-ugly")
 packages+=("mingw-w64-gst-libav")
