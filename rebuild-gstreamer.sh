@@ -80,13 +80,17 @@ packages+=("mingw-w64-pango")
 
 packages+=("mingw-w64-make")
 packages+=("mingw-w64-intel-tbb")
-
-
 packages+=("mingw-w64-libcroco")
-
 packages+=("mingw-w64-libdvdcss")
-
 packages+=("mingw-w64-libdvdread")
+
+packages+=("mingw-w64-libogg")
+packages+=("mingw-w64-speexdsp")
+packages+=("mingw-w64-flac")
+packages+=("mingw-w64-libvorbis")
+packages+=("mingw-w64-speex")
+
+
 
 packages+=("mingw-w64-libsndfile")
 packages+=("mingw-w64-portaudio")
@@ -94,7 +98,10 @@ packages+=("mingw-w64-portaudio")
 packages+=("mingw-w64-celt")
 packages+=("mingw-w64-chromaprint")
 
+packages+=("mingw-w64-gsl")
 packages+=("mingw-w64-gstreamer")
+packages+=("mingw-w64-libtheora")
+packages+=("mingw-w64-libvorbisidec-svn")
 packages+=("mingw-w64-gst-plugins-base")
 packages+=("mingw-w64-cogl")
 
@@ -105,17 +112,18 @@ packages+=("mingw-w64-faac")
 packages+=("mingw-w64-faad2")
 packages+=("mingw-w64-fluidsynth")
 packages+=("mingw-w64-graphene")
+packages+=("mingw-w64-yasm")
 packages+=("mingw-w64-gsm")
 
 packages+=("mingw-w64-libass")
 packages+=("mingw-w64-libbs2b")
 
-packages+=("mingw-w64-libdca-svn")
+packages+=("mingw-w64-libdca-git")
 packages+=("mingw-w64-libdvdnav")
 packages+=("mingw-w64-libexif")
 packages+=("mingw-w64-libgme")
 packages+=("mingw-w64-libmodplug")
-packages+=("mingw-w64-libmpeg2-svn")
+packages+=("mingw-w64-libmpeg2-git")
 
 packages+=("mingw-w64-openal")
 packages+=("mingw-w64-libsrtp")
