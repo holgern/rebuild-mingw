@@ -25,7 +25,7 @@ git_config user.name  'MSYS2 Continuous Integration'
 readonly RUN_ARGS="$@"
 [[ $# == 1 && $1 == --help || $[ $# == 0 ] == 1 ]] && {
 	echo "usage:"
-	echo "  ./${0##*/} --arch=<i686|x86_64> [OPTIONS] packagename"
+	echo "  ./${0##*/} [OPTIONS] packagename"
 	echo "  help:"
 	echo "    --pkgroot=<path>           - specifies the packages root directory"
 	exit 0
@@ -1124,20 +1124,11 @@ message 'Processing changes' "${commits[@]}"
 test -z "${packages}" && success 'No changes in package recipes'
 
 
-
-#export MINGW_INSTALLS=mingw64
-
-# Build
-message 'Building packages' "${packages[@]}"
-#execute 'Updating system' update_system
-
-
 for package in "${packages[@]}"; do
+    message 'Cleaning package'
 	rm -rf "${PKGROOT}/${package}"/pkg
     rm -rf "${PKGROOT}/${package}"/src
 
-    deploy_enabled && mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
-    deploy_enabled && mv "${PKGROOT}/${package}"/*.src.tar.gz $TOP_DIR/artifacts_src
 	rm -rf  "${PKGROOT}/${package}"/*.pkg.tar.xz
     rm -rf "${PKGROOT}/${package}"/*.src.tar.gz
     unset package
