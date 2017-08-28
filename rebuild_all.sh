@@ -2,18 +2,15 @@
 
 # Author: Holger Nahrstaedt <holger@nahrstaedt>
 
+readonly TOP_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 # Configure
 cd "$(dirname "$0")"
-source 'ci-library.sh'
-mkdir artifacts_old
-mkdir artifacts
-mv artifacts/* artifacts_old
-
-mkdir artifacts_src_old
-mkdir artifacts_src
-mv artifacts_src/* artifacts_src_old
+source $TOP_DIR/rebuild-library.sh
 
 
+./fresh_start.sh
+./clean-all-packages.sh --pkgroot=/c/MINGW-packages/ 
 ./rebuild-gcc.sh --pkgroot=/c/MINGW-packages/ 
 ./rebuild-curl.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall
 ./rebuild-cmake.sh --pkgroot=/c/MINGW-packages/ --do-not-reinstall

@@ -70,7 +70,7 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-#packages+=("mingw-w64-gcc")
+packages+=("mingw-w64-gcc")
 packages+=("mingw-w64-winpthreads-git")
 packages+=("mingw-w64-tools-git")
 packages+=("mingw-w64-headers-git")

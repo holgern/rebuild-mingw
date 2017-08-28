@@ -177,10 +177,25 @@ packages+=("mingw-w64-soundtouch")
 
 packages+=("mingw-w64-zbar")
 
+packages+=("mingw-w64-check")
 packages+=("mingw-w64-daala-git")
+
+
+packages+=("mingw-w64-glib-networking")
+packages+=("mingw-w64-libshout")
+packages+=("mingw-w64-libsoup")
+packages+=("mingw-w64-taglib")
+
 
 packages+=("mingw-w64-gst-plugins-good")
 packages+=("mingw-w64-gst-plugins-bad")
+
+
+packages+=("mingw-w64-libcddb")
+packages+=("mingw-w64-a52dec")
+packages+=("mingw-w64-libcdio")
+packages+=("mingw-w64-twolame")
+
 packages+=("mingw-w64-gst-plugins-ugly")
 packages+=("mingw-w64-gst-libav")
 packages+=("mingw-w64-gst-editing-services")
