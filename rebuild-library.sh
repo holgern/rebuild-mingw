@@ -271,6 +271,12 @@ function die {
 	exit $_retcode
 }
 
+adddate() {
+    while IFS= read -r line; do
+        echo "$(date) $line"
+    done
+}
+
 # Status functions
 failure() { local status="${1}"; local items=("${@:2}"); _status failure "${status}." "${items[@]}"; exit 1; }
 success() { local status="${1}"; local items=("${@:2}"); _status success "${status}." "${items[@]}"; exit 0; }

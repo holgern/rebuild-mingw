@@ -77,7 +77,6 @@ packages+=("mingw-w64-qtbinpatcher")
 packages+=("mingw-w64-libyaml")
 
 packages+=("mingw-w64-libatomic_ops")
-#packages+=("mingw-w64-firebird2-git")
 
 packages+=("mingw-w64-ninja")
 packages+=("mingw-w64-ruby")
@@ -110,8 +109,8 @@ packages+=("mingw-w64-jasper")
 
 packages+=("mingw-w64-libtommath")
 packages+=("mingw-w64-libatomic_ops")
-#firebird2-git is broken
-#packages+=("mingw-w64-firebird2-git")
+
+packages+=("mingw-w64-firebird2-git")
 packages+=("mingw-w64-libmariadbclient")
 packages+=("mingw-w64-postgresql")
 

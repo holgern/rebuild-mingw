@@ -95,7 +95,7 @@ packages+=("mingw-w64-libssh2")
 packages+=("mingw-w64-nghttp2")
 packages+=("mingw-w64-rtmpdump-git")
 packages+=("mingw-w64-ca-certificates")
-
+packages+=("mingw-w64-libidn2")
 packages+=("mingw-w64-curl")
 
 

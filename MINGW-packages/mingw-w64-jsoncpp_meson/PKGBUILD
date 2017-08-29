@@ -28,7 +28,7 @@ build() {
   mkdir "${srcdir}/build-${MINGW_CHOST}"
   
   cd ${srcdir}/${_realname}-${pkgver}
-  meson.py --prefix=${MINGW_PREFIX}  --buildtype=plain ${srcdir}/build-${MINGW_CHOST} -D  JSONCPP_USE_SECURE_MEMORY=0
+  meson --prefix=${MINGW_PREFIX}  --buildtype=plain ${srcdir}/build-${MINGW_CHOST} -D  JSONCPP_USE_SECURE_MEMORY=0
   ninja -v -C ${srcdir}/build-${MINGW_CHOST}
   
 }
