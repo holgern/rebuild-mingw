@@ -91,6 +91,7 @@ packages=()
         packages+=("mingw-w64-shared-mime-info")
         packages+=("mingw-w64-json-glib")
         packages+=("mingw-w64-libepoxy")
+
         packages+=("mingw-w64-gtk3")
         packages+=("mingw-w64-ghostscript")
         packages+=("mingw-w64-gtk2")

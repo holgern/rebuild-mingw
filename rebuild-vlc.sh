@@ -70,56 +70,54 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-packages+=("mingw-w64-gcc")
-packages+=("mingw-w64-winpthreads-git")
-packages+=("mingw-w64-tools-git")
-packages+=("mingw-w64-headers-git")
-packages+=("mingw-w64-crt-git")
+         packages+=("mingw-w64-a52dec")
+         packages+=("mingw-w64-aribb24")
+         packages+=("mingw-w64-chromaprint")
+         packages+=("mingw-w64-faad2")
+         packages+=("mingw-w64-ffmpeg")
+         packages+=("mingw-w64-flac")
+         packages+=("mingw-w64-fluidsynth")
+         packages+=("mingw-w64-fribidi")
+         packages+=("mingw-w64-gnutls")
+         packages+=("mingw-w64-gsm")
+         packages+=("mingw-w64-libass")
+         packages+=("mingw-w64-libbluray")
+         packages+=("mingw-w64-libcaca")
+         packages+=("mingw-w64-libcddb")
+         packages+=("mingw-w64-libcdio")
+         packages+=("mingw-w64-libdca")
+         packages+=("mingw-w64-libdvdcss")
+         packages+=("mingw-w64-libdvdnav")
+         packages+=("mingw-w64-libdvbpsi")
+         packages+=("mingw-w64-libgme")
+         packages+=("mingw-w64-libgoom2")
+         packages+=("mingw-w64-libmad")
+         packages+=("mingw-w64-libmatroska")
+         packages+=("mingw-w64-libmpcdec")
+         packages+=("mingw-w64-libmpeg2")
+         packages+=("mingw-w64-libproxy")
+         packages+=("mingw-w64-librsvg")
+         packages+=("mingw-w64-libsamplerate")
+         packages+=("mingw-w64-libshout")
+         packages+=("mingw-w64-libssh2")
+         packages+=("mingw-w64-libtheora")
+         packages+=("mingw-w64-libvpx")
+         packages+=("mingw-w64-libxml2")
+         packages+=("mingw-w64-lua51")
+         packages+=("mingw-w64-opencv")
+         packages+=("mingw-w64-opus")
+         packages+=("mingw-w64-portaudio")
+         packages+=("mingw-w64-protobuf")
+         packages+=("mingw-w64-schroedinger")
+         packages+=("mingw-w64-speex")
+         packages+=("mingw-w64-taglib")
+         packages+=("mingw-w64-twolame")
+         packages+=("mingw-w64-vcdimager")
+         packages+=("mingw-w64-x264")
+         packages+=("mingw-w64-x265")
+         packages+=("mingw-w64-xpm-nox")
 
-
-packages+=("mingw-w64-expat")
-packages+=("mingw-w64-gettext")
-packages+=("mingw-w64-libiconv")
-packages+=("mingw-w64-libtre-git")
-packages+=("mingw-w64-ncurses")
-packages+=("mingw-w64-libsystre")
-
-
-packages+=("mingw-w64-ca-certificates")
-packages+=("mingw-w64-p11-kit")
-packages+=("mingw-w64-openssl")
-
-packages+=("mingw-w64-bzip2")
-packages+=("mingw-w64-gdbm")
-
-packages+=("mingw-w64-libffi")
-packages+=("mingw-w64-termcap")
-packages+=("mingw-w64-readline")
-packages+=("mingw-w64-zlib")
-
-packages+=("mingw-w64-tcl")
-packages+=("mingw-w64-pkg-config")
-packages+=("mingw-w64-tk")
-packages+=("mingw-w64-python2")
-
-packages+=("mingw-w64-xz")
-packages+=("mingw-w64-gdb")
-packages+=("mingw-w64-gmp")
-packages+=("mingw-w64-isl")
-packages+=("mingw-w64-libmangle-git")
-packages+=("mingw-w64-libtasn1")
-
-#packages+=("mingw-w64-libwinpthread-git")
-packages+=("mingw-w64-make")
-packages+=("mingw-w64-mpfr")
-packages+=("mingw-w64-mpc")
-packages+=("mingw-w64-windows-default-manifest")
-packages+=("mingw-w64-winstorecompat-git")
-
-
-
-
-
+		packages+=("mingw-w64-vlc")
 
 message 'Processing changes' "${commits[@]}"
 
@@ -152,8 +150,8 @@ execute 'Approving recipe quality' check_recipe_quality
 }
 
 for package in "${packages[@]}"; do
-	execute 'Delete pkg' rm -rf "${PKGROOT}/${package}"/pkg
-    execute 'Delete src' rm -rf "${PKGROOT}/${package}"/src
+	rm -rf "${PKGROOT}/${package}"/pkg
+    rm -rf "${PKGROOT}/${package}"/src
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild

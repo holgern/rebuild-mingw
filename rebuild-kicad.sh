@@ -70,56 +70,21 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-packages+=("mingw-w64-gcc")
-packages+=("mingw-w64-winpthreads-git")
-packages+=("mingw-w64-tools-git")
-packages+=("mingw-w64-headers-git")
-packages+=("mingw-w64-crt-git")
+packages+=("mingw-w64-boost")
+ packages+=("mingw-w64-cairo")
+ packages+=("mingw-w64-glew")
+ packages+=("mingw-w64-openssl")
+ packages+=("mingw-w64-wxPython")
+ packages+=("mingw-w64-wxWidgets")
+packages+=("mingw-w64-cmake")
+ packages+=("mingw-w64-doxygen")
+ packages+=("mingw-w64-gcc")
+ packages+=("mingw-w64-glm")
+ packages+=("mingw-w64-python2")
+ packages+=("mingw-w64-pkg-config")
+ packages+=("mingw-w64-swig")
 
-
-packages+=("mingw-w64-expat")
-packages+=("mingw-w64-gettext")
-packages+=("mingw-w64-libiconv")
-packages+=("mingw-w64-libtre-git")
-packages+=("mingw-w64-ncurses")
-packages+=("mingw-w64-libsystre")
-
-
-packages+=("mingw-w64-ca-certificates")
-packages+=("mingw-w64-p11-kit")
-packages+=("mingw-w64-openssl")
-
-packages+=("mingw-w64-bzip2")
-packages+=("mingw-w64-gdbm")
-
-packages+=("mingw-w64-libffi")
-packages+=("mingw-w64-termcap")
-packages+=("mingw-w64-readline")
-packages+=("mingw-w64-zlib")
-
-packages+=("mingw-w64-tcl")
-packages+=("mingw-w64-pkg-config")
-packages+=("mingw-w64-tk")
-packages+=("mingw-w64-python2")
-
-packages+=("mingw-w64-xz")
-packages+=("mingw-w64-gdb")
-packages+=("mingw-w64-gmp")
-packages+=("mingw-w64-isl")
-packages+=("mingw-w64-libmangle-git")
-packages+=("mingw-w64-libtasn1")
-
-#packages+=("mingw-w64-libwinpthread-git")
-packages+=("mingw-w64-make")
-packages+=("mingw-w64-mpfr")
-packages+=("mingw-w64-mpc")
-packages+=("mingw-w64-windows-default-manifest")
-packages+=("mingw-w64-winstorecompat-git")
-
-
-
-
-
+		packages+=("mingw-w64-kicad")
 
 message 'Processing changes' "${commits[@]}"
 
@@ -152,8 +117,8 @@ execute 'Approving recipe quality' check_recipe_quality
 }
 
 for package in "${packages[@]}"; do
-	execute 'Delete pkg' rm -rf "${PKGROOT}/${package}"/pkg
-    execute 'Delete src' rm -rf "${PKGROOT}/${package}"/src
+	rm -rf "${PKGROOT}/${package}"/pkg
+    rm -rf "${PKGROOT}/${package}"/src
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild

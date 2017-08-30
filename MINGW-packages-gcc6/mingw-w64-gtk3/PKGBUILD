@@ -1,0 +1,73 @@
+# Maintainer: Alexey Pavlov <alexpux@gmail.com>
+
+_realname=gtk3
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=3.22.16
+pkgrel=1
+pkgdesc="GObject-based multi-platform GUI toolkit (v3) (mingw-w64)"
+arch=('any')
+url="https://www.gtk.org/"
+license=("LGPL")
+install=gtk3-${CARCH}.install
+makedepends=("${MINGW_PACKAGE_PREFIX}-gcc"
+             "${MINGW_PACKAGE_PREFIX}-pkg-config"
+             "${MINGW_PACKAGE_PREFIX}-python2"
+             "${MINGW_PACKAGE_PREFIX}-gobject-introspection")
+# python2 is required to run gdbus-codegen
+makedepends+=("autoconf" "automake" "libtool")
+# autotools are required because several Makefile.am are modified
+depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs"
+         "${MINGW_PACKAGE_PREFIX}-adwaita-icon-theme"
+         "${MINGW_PACKAGE_PREFIX}-atk"
+         "${MINGW_PACKAGE_PREFIX}-cairo"
+         "${MINGW_PACKAGE_PREFIX}-gdk-pixbuf2"
+         "${MINGW_PACKAGE_PREFIX}-glib2"
+         "${MINGW_PACKAGE_PREFIX}-json-glib"
+         "${MINGW_PACKAGE_PREFIX}-libepoxy"
+         "${MINGW_PACKAGE_PREFIX}-pango"
+         "${MINGW_PACKAGE_PREFIX}-shared-mime-info")
+options=('strip' '!debug' 'staticlibs')
+source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
+sha256sums=('3e0c3ad01f3c8c5c9b1cc1ae00852bd55164c8e5a9c1f90ba5e07f14f175fe2c')
+
+prepare() {
+  cd "${srcdir}/gtk+-${pkgver}"
+
+  autoreconf -i
+}
+
+build() {
+  #export GI_SCANNER_DEBUG="save-temps"
+  export MSYS2_ARG_CONV_EXCL="-//OASIS//DTD"
+  rm -rf build-${MINGW_CHOST}
+  cp -rf gtk+-${pkgver} build-${MINGW_CHOST}
+  cd build-${MINGW_CHOST}
+
+  PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/share/pkgconfig" \
+  ./configure \
+    --prefix=${MINGW_PREFIX} \
+    --build=${MINGW_CHOST} \
+    --host=${MINGW_CHOST} \
+    --enable-win32-backend \
+    --enable-shared \
+    --enable-introspection \
+    --enable-broadway-backend \
+    --disable-cups \
+    --with-included-immodules \
+    --enable-silent-rules
+
+  make #V=1
+}
+
+package() {
+  #export MSYS2_ARG_CONV_EXCL="-//OASIS"
+  cd "${srcdir}/build-${MINGW_CHOST}"
+  make -j1 DESTDIR="${pkgdir}" install
+  find "${pkgdir}${MINGW_PREFIX}" -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
+
+  mv ${pkgdir}${MINGW_PREFIX}/bin/gtk-update-icon-cache{,-3.0}.exe
+  mv ${pkgdir}${MINGW_PREFIX}/share/man/man1/gtk-update-icon-cache{,-3.0}.1
+
+  install -Dm644 "${srcdir}/gtk+-${pkgver}/COPYING" "${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/COPYING"
+}
