@@ -39,6 +39,9 @@ readonly RUN_ARGS="$@"
 # **************************************************************************
 PKGROOT=${TOP_DIR}
 BUILD_ARCHITECTURE="x86_64"
+[[ ${MINGW_INSTALLS} == mingw32 ]] && {
+	BUILD_ARCHITECTURE="i686"
+}
 while [[ $# > 0 ]]; do
 	case $1 in
 		--arch=*)

@@ -39,6 +39,9 @@ readonly RUN_ARGS="$@"
 # **************************************************************************
 PKGROOT=${TOP_DIR}
 BUILD_ARCHITECTURE="x86_64"
+[[ ${MINGW_INSTALLS} == mingw32 ]] && {
+	BUILD_ARCHITECTURE="i686"
+}
 while [[ $# > 0 ]]; do
 	case $1 in
 		--arch=*)
@@ -100,6 +103,7 @@ packages+=("mingw-w64-zlib")
 packages+=("mingw-w64-tcl")
 packages+=("mingw-w64-pkg-config")
 packages+=("mingw-w64-tk")
+
 packages+=("mingw-w64-python2")
 
 packages+=("mingw-w64-xz")

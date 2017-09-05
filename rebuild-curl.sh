@@ -39,6 +39,9 @@ readonly RUN_ARGS="$@"
 # **************************************************************************
 PKGROOT=${TOP_DIR}
 BUILD_ARCHITECTURE="x86_64"
+[[ ${MINGW_INSTALLS} == mingw32 ]] && {
+	BUILD_ARCHITECTURE="i686"
+}
 while [[ $# > 0 ]]; do
 	case $1 in
 		--arch=*)
@@ -95,7 +98,7 @@ packages+=("mingw-w64-libssh2")
 packages+=("mingw-w64-nghttp2")
 packages+=("mingw-w64-rtmpdump-git")
 packages+=("mingw-w64-ca-certificates")
-packages+=("mingw-w64-libidn2")
+#packages+=("mingw-w64-libidn2")
 packages+=("mingw-w64-curl")
 
 
