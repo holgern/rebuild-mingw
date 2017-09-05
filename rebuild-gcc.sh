@@ -30,9 +30,10 @@ readonly RUN_ARGS="$@"
 	echo "    --pkgroot=<path>           - specifies the packages root directory"
 	echo "    --arch=<i686|x86_64>       - specifies the architecture"
     echo "    --do-not-reinstall         - stop if package is already installed"
-	echo "    --add_depend_pkg           - add dependend packages"
-	echo "    --define_build_order       - automatically define build order"
+	echo "    --add-depend-pkg           - add dependend packages"
+	echo "    --define-build-order       - automatically define build order"
 	echo "    --simulate                 - do not build"
+	echo "    --check-recipe-quality     - check recipe quality"
 	exit 0
 }
 
@@ -60,9 +61,10 @@ while [[ $# > 0 ]]; do
 			PKGROOT=$(realpath ${1/--pkgroot=/})
 		;;
 		--do-not-reinstall) NOT_REINSTALL=yes ;;
-		--add_depend_pkg) ADD_DEPEND_PKG=yes ;;
-		--define_build_order) DEFINE_BUILD_ORDER=yes ;;
+		--add-depend-pkg) ADD_DEPEND_PKG=yes ;;
+		--define-build-order) DEFINE_BUILD_ORDER=yes ;;
 		--simulate) SIMULATE=yes ;;
+		--check-recipe-quality) CHECK_RECIPE_QUALITY=yes ;;
 		*)	die "Unsupported line"  ;;
 	esac
 	shift
@@ -149,8 +151,9 @@ test -z "${packages}" && success 'No changes in package recipes'
 # Build
 message 'Building packages' "${packages[@]}"
 #execute 'Updating system' update_system
-execute 'Approving recipe quality' check_recipe_quality
-
+[[ $CHECK_RECIPE_QUALITY == yes ]] && {
+	execute 'Approving recipe quality' check_recipe_quality
+}
 [[ $SIMULATE == yes ]] && {
 	success 'Simulate only'
 }
