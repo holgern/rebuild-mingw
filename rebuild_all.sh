@@ -133,6 +133,12 @@ if test -z "$(cat ${LOGFILE} | grep 'rebuild-qt5-second-run.sh finished')"; then
 echo "rebuild-qt5-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
+if test -z "$(cat ${LOGFILE} | grep 'rebuild-qtcreator.sh finished')"; then
+./rebuild-qtcreator.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+echo "rebuild-qtcreator.sh finished" | adddate >> ${LOGFILE}
+fi
+
+
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-gstreamer.sh finished')"; then
 ./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-gstreamer.sh finished" | adddate >> ${LOGFILE}

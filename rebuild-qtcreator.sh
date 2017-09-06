@@ -75,51 +75,13 @@ message 'Package root' "${PKGROOT}"
 
 packages=()
 
-
-packages+=("mingw-w64-xpm-nox")
-packages+=("mingw-w64-qtbinpatcher")
-
-packages+=("mingw-w64-libyaml")
-
-packages+=("mingw-w64-libatomic_ops")
-
-packages+=("mingw-w64-ninja")
-packages+=("mingw-w64-ruby")
-packages+=("mingw-w64-giflib")
-packages+=("mingw-w64-SDL")
-packages+=("mingw-w64-zziplib")
-
-packages+=("mingw-w64-assimp")
-packages+=("mingw-w64-nasm")
-
-packages+=("mingw-w64-libjpeg-turbo")
-packages+=("mingw-w64-libtiff")
-packages+=("mingw-w64-lcms2")
-packages+=("mingw-w64-libpng")
-
-packages+=("mingw-w64-libmng")
-packages+=("mingw-w64-libwebp")
-packages+=("mingw-w64-wineditline")
-packages+=("mingw-w64-pcre")
-packages+=("mingw-w64-glib2")
-packages+=("mingw-w64-graphite2")
-packages+=("mingw-w64-icu")
-packages+=("mingw-w64-pixman")
-
-
-packages+=("mingw-w64-freeglut")
-packages+=("mingw-w64-dbus")
-packages+=("mingw-w64-fontconfig")
-packages+=("mingw-w64-jasper")
-
-packages+=("mingw-w64-libtommath")
-packages+=("mingw-w64-libatomic_ops")
-
-packages+=("mingw-w64-firebird2-git")
-packages+=("mingw-w64-libmariadbclient")
-packages+=("mingw-w64-postgresql")
-
+packages+=("mingw-w64-cmake")
+packages+=("mingw-w64-clang")
 packages+=("mingw-w64-qt5")
+packages+=("mingw-w64-qbs")
+packages+=("mingw-w64-qtcreator")
+
+
 
 message 'Processing changes' "${commits[@]}"
 
