@@ -72,35 +72,34 @@ echo "rebuild-gcc.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-curl.sh finished')"; then
-./rebuild-curl.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-curl.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-curl.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cmake.sh finished')"; then
-./rebuild-cmake.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-cmake.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-cmake.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cmake-second-run.sh finished')"; then
-./rebuild-cmake-second-run.sh --pkgroot=${PKGROOT}
+./rebuild-cmake-second-run.sh --pkgroot=${PKGROOT} --check-recipe-quality
 echo "rebuild-cmake-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-python.sh finished')"; then
-./rebuild-python.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-python.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-python.sh finished" | adddate >> ${LOGFILE}
 fi
 
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-doxygen.sh finished')"; then
 #pacman --noprogressbar --noconfirm -S mingw-w64-i686-clang  mingw-w64-x86_64-clang 
-./rebuild-doxygen.sh --pkgroot=${PKGROOT} --do-not-reinstall
-./rebuild-doxygen.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-doxygen.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-doxygen.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-harfbuzz.sh finished')"; then
-./rebuild-harfbuzz.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-harfbuzz.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-harfbuzz.sh finished" | adddate >> ${LOGFILE}
 fi
 
@@ -110,7 +109,7 @@ echo "rebuild-harfbuzz-second_run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cairo.sh finished')"; then
-./rebuild-cairo.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-cairo.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-cairo.sh finished" | adddate >> ${LOGFILE}
 fi
 
@@ -120,12 +119,12 @@ echo "rebuild-cairo-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-imagemagick.sh finished')"; then
-./rebuild-imagemagick.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-imagemagick.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-imagemagick.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-qt5.sh finished')"; then
-./rebuild-qt5.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-qt5.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-qt5.sh finished" | adddate >> ${LOGFILE}
 fi
 
@@ -135,7 +134,7 @@ echo "rebuild-qt5-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-gstreamer.sh finished')"; then
-./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --do-not-reinstall
+./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
 echo "rebuild-gstreamer.sh finished" | adddate >> ${LOGFILE}
 fi
 

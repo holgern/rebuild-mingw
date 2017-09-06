@@ -36,7 +36,7 @@ source=(#"http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
 sha256sums=('5228e0a1f8fd14317f30f08f3dd72971bca432f8cdd2281d421fdcc2279de58c'
             '234de8c5d4c28b03c19e638a353e8defb2de0367a634c002b0ea7d2877bd0756'
             '6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975'
-            '7e244c20eec8c7b287dbee1d34de178d9b0c419dc4c2b11c90eaf626c92bf781')
+            '14c04d3344ba9267cb29188902e292494439031094d14108e530c04bc72c04a5')
 
 prepare() {
   cd "${srcdir}"/${_realname}-${pkgver}
