@@ -1,0 +1,72 @@
+# Maintainer: Alexey Pavlov <Alexpux@gmail.com>
+
+_realname=doxygen
+pkgbase=mingw-w64-${_realname}
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=1.8.13
+pkgrel=4
+pkgdesc="A documentation system for C++, C, Java, IDL and PHP (mingw-w64)"
+arch=('any')
+url="http://www.doxygen.org/"
+options=('strip' 'staticlibs')
+license=('GPL')
+depends=("${MINGW_PACKAGE_PREFIX}-clang"
+         "${MINGW_PACKAGE_PREFIX}-gcc-libs"
+         "${MINGW_PACKAGE_PREFIX}-libiconv"
+         "${MINGW_PACKAGE_PREFIX}-sqlite3"
+         "${MINGW_PACKAGE_PREFIX}-xapian-core")
+makedepends=("${MINGW_PACKAGE_PREFIX}-cmake"
+             "${MINGW_PACKAGE_PREFIX}-gcc"
+             "${MINGW_PACKAGE_PREFIX}-pkg-config"
+             "${MINGW_PACKAGE_PREFIX}-python2"
+             #"${MINGW_PACKAGE_PREFIX}-qt4"
+             'flex'
+             'bison')
+optdepends=("${MINGW_PACKAGE_PREFIX}-qt4")
+source=("http://ftp.stack.nl/pub/users/dimitri/${_realname}-${pkgver}.src.tar.gz"
+        'cmake-mingw.patch'
+        'fix-casts.patch'
+        'fix-qt.patch')
+sha256sums=('af667887bd7a87dc0dbf9ac8d86c96b552dfb8ca9c790ed1cbffaa6131573f6b'
+            'd1896f6fae4b78b073170c0a64b256c26bbb1b3feb65d3c0f0d99e8c65d9e698'
+            '0cbf92d80e757287bfe1bb86168751de8a467e31e8ed26baf7c2b75450ce1f4c'
+            'cab6428fc70a1974ab5385505ad0b1d56b5c5d9e5c15da125a2c1bf7387e9c30')
+
+prepare() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+
+  patch -p1 -i "${srcdir}/cmake-mingw.patch"
+  patch -p1 -i "${srcdir}/fix-casts.patch"
+  patch -p1 -i "${srcdir}/fix-qt.patch"
+}
+
+build() {
+  export QTDIR=${MINGW_PREFIX}
+
+  [[ -d build-${MINGW_CHOST} ]] && rm -rf build-${MINGW_CHOST}
+  mkdir build-${MINGW_CHOST} && cd build-${MINGW_CHOST}
+
+  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
+  ${MINGW_PREFIX}/bin/cmake \
+    -G"MSYS Makefiles" \
+    -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -Dbuild_wizard=ON \
+    -Dbuild_search=ON \
+    -Duse_sqlite3=ON \
+    -Duse_libclang=ON \
+    ../${_realname}-${pkgver}
+#//Extra include path
+#CUSTOM_INCLUDE_DIR:FILEPATH=
+
+#//Extra library path
+#CUSTOM_LINK_DIR:FILEPATH=
+
+  make
+}
+
+package() {
+  cd ${srcdir}/build-${MINGW_CHOST}
+
+  make DESTDIR="${pkgdir}" install
+}
