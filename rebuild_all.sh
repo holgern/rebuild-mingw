@@ -26,6 +26,8 @@ readonly LOGFILE="./logfile.txt"
 
 PKGROOT="/c/MINGW-packages/"
 BUILD_ARCHITECTURE="x86_64"
+BUILD_mingw32=yes
+BUILD_mingw64=yes
 unset MINGW_INSTALLS
 while [[ $# > 0 ]]; do
 	case $1 in
@@ -34,9 +36,11 @@ while [[ $# > 0 ]]; do
 			case $BUILD_ARCHITECTURE in
 				i686)
 				export MINGW_INSTALLS=mingw32
+				BUILD_mingw64=no
 				;;
 				x86_64)
 				export MINGW_INSTALLS=mingw64
+				BUILD_mingw32=no
 				;;
 				*) die "Unsupported architecture: \"$BUILD_ARCHITECTURE\". terminate."  ;;
 			esac
@@ -67,80 +71,155 @@ echo "clean-all-packages.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-gcc.sh finished')"; then
-./rebuild-gcc.sh --pkgroot=${PKGROOT}
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-gcc.sh --pkgroot=${PKGROOT} --arch=i686
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-gcc.sh --pkgroot=${PKGROOT} --arch=x86_64
+}
 echo "rebuild-gcc.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-curl.sh finished')"; then
-./rebuild-curl.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-curl.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-curl.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-curl.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cmake.sh finished')"; then
-./rebuild-cmake.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-cmake.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-cmake.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-cmake.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cmake-second-run.sh finished')"; then
-./rebuild-cmake-second-run.sh --pkgroot=${PKGROOT} --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-cmake-second-run.sh --pkgroot=${PKGROOT} --arch=i686 --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-cmake-second-run.sh --pkgroot=${PKGROOT} --arch=x86_64 --check-recipe-quality
+}
 echo "rebuild-cmake-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-python.sh finished')"; then
-./rebuild-python.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-python.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-python.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-python.sh finished" | adddate >> ${LOGFILE}
 fi
 
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-doxygen.sh finished')"; then
 #pacman --noprogressbar --noconfirm -S mingw-w64-i686-clang  mingw-w64-x86_64-clang 
-./rebuild-doxygen.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-doxygen.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-doxygen.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-doxygen.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-harfbuzz.sh finished')"; then
-./rebuild-harfbuzz.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-harfbuzz.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-harfbuzz.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-harfbuzz.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-harfbuzz-second_run.sh finished')"; then
-./rebuild-harfbuzz-second_run.sh --pkgroot=${PKGROOT} 
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-harfbuzz-second_run.sh --pkgroot=${PKGROOT}  --arch=i686
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-harfbuzz-second_run.sh --pkgroot=${PKGROOT}  --arch=x86_64
+}
 echo "rebuild-harfbuzz-second_run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cairo.sh finished')"; then
-./rebuild-cairo.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-cairo.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-cairo.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-cairo.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-cairo-second-run.sh finished')"; then
-./rebuild-cairo-second-run.sh --pkgroot=${PKGROOT}
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-cairo-second-run.sh --pkgroot=${PKGROOT}  --arch=i686
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-cairo-second-run.sh --pkgroot=${PKGROOT}  --arch=x86_64
+}
 echo "rebuild-cairo-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-imagemagick.sh finished')"; then
-./rebuild-imagemagick.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-imagemagick.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-imagemagick.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-imagemagick.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-qt5.sh finished')"; then
-./rebuild-qt5.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-qt5.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-qt5.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-qt5.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-qt5-second-run.sh finished')"; then
-./rebuild-qt5-second-run.sh --pkgroot=${PKGROOT}
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-qt5-second-run.sh --pkgroot=${PKGROOT}  --arch=i686
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-qt5-second-run.sh --pkgroot=${PKGROOT}  --arch=x86_64
+}
 echo "rebuild-qt5-second-run.sh finished" | adddate >> ${LOGFILE}
 fi
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-qtcreator.sh finished')"; then
-./rebuild-qtcreator.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-qtcreator.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-qtcreator.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-qtcreator.sh finished" | adddate >> ${LOGFILE}
 fi
 
 
 if test -z "$(cat ${LOGFILE} | grep 'rebuild-gstreamer.sh finished')"; then
-./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --do-not-reinstall --check-recipe-quality
+[[ $BUILD_mingw32 == yes ]] && {
+./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --arch=i686 --do-not-reinstall --check-recipe-quality
+}
+[[ $BUILD_mingw64 == yes ]] && {
+./rebuild-gstreamer.sh --pkgroot=${PKGROOT} --arch=x86_64 --do-not-reinstall --check-recipe-quality
+}
 echo "rebuild-gstreamer.sh finished" | adddate >> ${LOGFILE}
 fi
 
