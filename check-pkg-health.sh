@@ -47,14 +47,15 @@ done
 message 'Package root' "${PKGROOT}"
 
 
+cd ${PKGROOT}
 packages=()
-for package in ${PKGROOT}/*; do
+for package in *; do
     if [[ -d $package ]]; then
 	   packages+=("$package")
 	fi
     unset package
 done
-
+cd "$(dirname "$0")"
 
 
 

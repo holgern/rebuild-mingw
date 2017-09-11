@@ -158,6 +158,9 @@ for package in "${packages[@]}"; do
 
 	deploy_enabled &&  mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts
     execute 'Building binary' makepkg-mingw --log --force --noprogressbar --skippgpcheck --nocheck --syncdeps --cleanbuild
+	#[[ ${package} == 'mingw-w64-qt5' ]] && {
+	#execute 'Repackage binary' makepkg-mingw --log --force --repackage
+	#}
     execute 'Building source' makepkg --noconfirm --force --noprogressbar --skippgpcheck --allsource --config '/etc/makepkg_mingw64.conf'
     execute 'Installing' pacman --noprogressbar --noconfirm --upgrade *.pkg.tar.xz
     deploy_enabled && mv "${PKGROOT}/${package}"/*.pkg.tar.xz $TOP_DIR/artifacts

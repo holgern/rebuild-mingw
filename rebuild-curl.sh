@@ -83,6 +83,7 @@ packages+=("mingw-w64-libffi")
 
 packages+=("mingw-w64-nettle")
 packages+=("mingw-w64-p11-kit")
+packages+=("mingw-w64-libidn2")
 packages+=("mingw-w64-gnutls")
 
 packages+=("mingw-w64-jansson")
@@ -100,7 +101,7 @@ packages+=("mingw-w64-libssh2")
 packages+=("mingw-w64-nghttp2")
 packages+=("mingw-w64-rtmpdump-git")
 packages+=("mingw-w64-ca-certificates")
-packages+=("mingw-w64-libidn2")
+
 packages+=("mingw-w64-curl")
 
 

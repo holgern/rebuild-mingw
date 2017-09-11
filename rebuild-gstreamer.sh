@@ -165,7 +165,7 @@ packages+=("mingw-w64-boost")
 
 packages+=("mingw-w64-libmariadbclient")
 packages+=("mingw-w64-postgresql")
-
+packages+=("mingw-w64-libharu")
 packages+=("mingw-w64-vtk")
 
 packages+=("mingw-w64-openblas")
