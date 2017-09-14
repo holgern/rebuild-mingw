@@ -80,7 +80,7 @@ packages+=("mingw-w64-clang")
 packages+=("mingw-w64-qt5")
 
 packages+=("mingw-w64-qbs")
-packages+=("mingw-w64-qtcreator")
+packages+=("mingw-w64-qt-creator")
 
 
 

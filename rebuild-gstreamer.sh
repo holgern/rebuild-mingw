@@ -105,8 +105,9 @@ packages+=("mingw-w64-chromaprint")
 
 packages+=("mingw-w64-gsl")
 packages+=("mingw-w64-gstreamer")
-packages+=("mingw-w64-libtheora")
 packages+=("mingw-w64-libvorbisidec-svn")
+packages+=("mingw-w64-libtheora")
+
 packages+=("mingw-w64-gst-plugins-base")
 packages+=("mingw-w64-cogl")
 
