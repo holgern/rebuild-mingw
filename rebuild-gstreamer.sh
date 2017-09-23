@@ -175,6 +175,8 @@ packages+=("mingw-w64-eigen3")
 packages+=("mingw-w64-python-nose")
 packages+=("mingw-w64-python-numpy")
 
+#packages+=("mingw-w64-protobuf")
+packages+=("mingw-w64-tiny-dnn")
 packages+=("mingw-w64-opencv")
 
 packages+=("mingw-w64-openh264")

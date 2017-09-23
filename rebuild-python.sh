@@ -115,7 +115,7 @@ packages+=("mingw-w64-python-mock")
 packages+=("mingw-w64-python-urllib3")
 
 		
-packages+=("mingw-w64-python-csssselect") 
+packages+=("mingw-w64-python-cssselect") 
 packages+=("mingw-w64-python2-typing")
 packages+=("mingw-w64-python-lxml") 
 packages+=("mingw-w64-python-whoosh")
